@@ -64,9 +64,17 @@ GROUP BY category
 ORDER BY 2 desc;
 
 -- Q4. Find all products where MRP is greater than ₹500 and discount is less than 10%.
-
+SELECT * 
+FROM products
+WHERE mrp > 500 AND discountPercent < 10
+ORDER BY discountPercent DESC;
 
 -- Q5. Identify the top 5 categories offering the highest average discount percentage.
+SELECT category , AVG(discountPercent)
+FROM products
+GROUP BY 1
+ORDER BY 2 DESC
+LIMIT 5;
 
 
 -- Q6. Find the price per gram for products above 100g and sort by best value.
