@@ -78,10 +78,25 @@ LIMIT 5;
 
 
 -- Q6. Find the price per gram for products above 100g and sort by best value.
+SELECT weightInGms, discountedSellingPrice,
+round(discountedSellingPrice/weightInGms,3) as price_per_gram
+FROM products
+WHERE weightInGms > 100
+ORDER BY 3 ;
 
+-- Q7.Group the products into categories like Low, Medium, Bulk Quantity.
 
--- Q7.Group the products into categories like Low, Medium, Bulk.
+-- SELECT DISTINCT quantity
+-- from products
+-- ORDER BY 1 desc;
 
+SELECT NAME, quantity,
+CASE WHEN quantity >= 0 AND quantity <=500 THEN "Low Quantity"
+	WHEN quantity >= 501 AND quantity <=1000 THEN "Meadium Quantity"
+ELSE "Bulk Quantity"
+END AS Category
+FROM products
+ORDER BY 2;
 
 -- Q8.What is the Total Inventory Weight Per Category 
 
