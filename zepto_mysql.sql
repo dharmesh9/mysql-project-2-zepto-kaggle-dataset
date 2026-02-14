@@ -99,12 +99,31 @@ FROM products
 ORDER BY 2;
 
 -- Q8.What is the Total Inventory Weight Per Category 
+-- SELECT category, SUM(weightInGms)
+-- FROM products
+-- GROUP BY category
+-- ORDER BY 2 DESC;
+
+SELECT category, SUM(weightInGms * availableQuantity)
+FROM products
+GROUP BY category
+ORDER BY 2 DESC;
 
 -- Q9. Find the top 10 products generating the highest estimated revenue (mrp × availableQuantity).
+-- SELECT name, SUM(mrp * availableQuantity) AS Estimated_revenue
+-- FROM products
+-- GROUP BY name
+-- ORDER BY 2 DESC
+-- LIMIT 10; Returns total revenue per product name / COMBINE DUPLICATE PRODUCTS.
+
+SELECT name,category, (mrp * availableQuantity) AS Estimated_revenue
+FROM products
+ORDER BY Estimated_revenue DESC
+LIMIT 10; -- Returns total revenue per ROW / DONT COMBINE DUPLICATE PRODUCS.
 
 -- Q10. Identify products where the discounted selling price is more than 30% lower than MRP.
 
--- Q11. Determine the total number of out‑of‑stock products in each category.
+-- Q11. Determine the total number of out of stock products in each category.
 
 -- Q12. Find the average weight of products per category and sort by heaviest categories.
 
