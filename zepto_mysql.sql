@@ -122,8 +122,16 @@ ORDER BY Estimated_revenue DESC
 LIMIT 10; -- Returns total revenue per ROW / DONT COMBINE DUPLICATE PRODUCS.
 
 -- Q10. Identify products where the discounted selling price is more than 30% lower than MRP.
+SELECT name, category, mrp, discountedSellingPrice
+FROM products
+WHERE discountedSellingPrice <= mrp * 70/100;
 
 -- Q11. Determine the total number of out of stock products in each category.
+SELECT category, COUNT(outOfStock)
+FROM products
+WHERE outOfStock = "TRUE"
+GROUP BY category
+ORDER BY 2 DESC;
 
 -- Q12. Find the average weight of products per category and sort by heaviest categories.
 
