@@ -154,5 +154,5 @@ While half code and insights in this repository are independently written, I dre
 
 ## 👤 Author
 
-Dharmesh Makwana 
-SQL | Data Analytics | Business Intelligence
+Dharmesh Makwana
+| SQL | Data Analytics | Business Intelligence
