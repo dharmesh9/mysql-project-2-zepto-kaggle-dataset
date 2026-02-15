@@ -144,6 +144,21 @@ SELECT NAME, category, discountPercent
 FROM products
 WHERE discountPercent IS NULL OR discountPercent = "";
 
--- Q14. Identify categories where the total available quantity is below 500 (low‑inventory categories).
+-- Q14. Identify categories where the total available quantity is below 500 (low inventory categories).
+SELECT category,
+       SUM(availableQuantity) AS total_quantity
+FROM products
+GROUP BY category
+HAVING SUM(availableQuantity) < 500;
 
 -- Q15. Find products where the price per gram (discountedSellingPrice / weightInGms) is above the overall average price per gram.
+SELECT name,
+       category,
+       ROUND((discountedSellingPrice * 1.0 / weightInGms),2) AS price_per_gram
+FROM products
+WHERE (discountedSellingPrice * 1.0 / weightInGms) >
+      (
+          SELECT AVG(discountedSellingPrice * 1.0 / weightInGms)
+          FROM products
+      );
+
