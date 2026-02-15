@@ -134,8 +134,15 @@ GROUP BY category
 ORDER BY 2 DESC;
 
 -- Q12. Find the average weight of products per category and sort by heaviest categories.
+SELECT category, ROUND(AVG(weightInGms/100),2) AS average_weight
+FROM products
+GROUP BY category
+ORDER BY 2 DESC;
 
 -- Q13. List products where the discountPercent is NULL or missing (data quality check).
+SELECT NAME, category, discountPercent
+FROM products
+WHERE discountPercent IS NULL OR discountPercent = "";
 
 -- Q14. Identify categories where the total available quantity is below 500 (low‑inventory categories).
 
